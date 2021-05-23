@@ -38,7 +38,7 @@ function playRound(playerSelection, computerSelection){
     let message;
     let winner = false;
 
-    //if statements for comparing, seperate player wins for easier reading.
+    //if statements for comparing, separate player wins for easier reading.
     //combined computer win for shorter code
     if ((playerSelection == "rock") && (computerSelection == "scissors")){
         message = "You Win! Rock beats Scissors!"
@@ -57,12 +57,43 @@ function playRound(playerSelection, computerSelection){
         winner = false;
     }
     console.log(message);
-    return winner;
+    return winner, message;
 }
-let playerSelection = prompt("Enter guess");
-let computerSelection = computerPlay();
-playRound(playerSelection, computerSelection);
 
+let playerScore;
+let computerScore;
 // game function: loop using round function, 5 rounds, score, winner/loser at end
 //use prompt for input
-//console.log for results each round and end
+function game(){
+    playerScore = 0;
+    computerScore = 0;
+    //varible declaration
+    let round = 1;
+    let playerSelection;
+    let computerSelection;
+    let win;
+    //do while loop for rounds
+    do{
+        playerSelection = prompt("Enter Choice:");
+        computerSelection = computerPlay();
+        win = playRound(playerSelection, computerSelection);
+        if(win){
+            playerScore++;
+        }
+        else {
+            computerScore++;
+        }
+        round++;
+
+    }while(round <= 5);
+    if (playerScore > computerScore){
+        alert(`\t\tYou Won!\nYour Score: ${playerScore} | Computer: ${computerScore}`)
+    }
+    else if(playerScore == computerScore){
+        alert(`Tied! Both players scored ${playerScore}`);
+    }
+    else{
+        alert(`You lose!\nYour score: ${playerScore} | Computer: ${computerScore}`);
+    }
+    
+}
