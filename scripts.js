@@ -57,7 +57,7 @@ function playRound(playerSelection, computerSelection){
         winner = false;
     }
     console.log(message);
-    return winner, message;
+    return winner;
 }
 
 let playerScore;

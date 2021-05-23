@@ -6,5 +6,5 @@ Learned:
 
 **Better understanding of:
 ***Functions
-***Varible Declaration/scope
+***Varible Declaration/Scope
 ***Escape Characters
