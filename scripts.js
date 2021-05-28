@@ -2,6 +2,29 @@
     Odin Project
     Dustin Brown 05/22/2021
 */
+// TODO: Modify game function for play button to start game and set scores,
+// and ungrey button elements
+
+
+//varibles for buttons and game play
+const play = document.querySelector('#play');
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+//start game
+play.addEventListener('click', ()=> {
+    game() }
+    );
+
+//choices
+rock.addEventListener('click' , ()=> {
+    playRound("rock", computerPlay())});
+paper.addEventListener('click' , ()=> {
+    playRound("paper", computerPlay())});
+scissors.addEventListener('click' , ()=> {
+    playRound("scissors", computerPlay())});
+
 //random function for computer (0,1,2)
 function computerRandom(){
     return Math.floor(Math.random() * 3);

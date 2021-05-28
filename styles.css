@@ -1,0 +1,37 @@
+html {
+    background: url(/Foundations/Rock_Paper_Scissors/rps/rock_paper_scissors/images/bg-friends.jpg) no-repeat center center fixed;;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+
+}
+section {
+  width: 60%;
+  display: block; 
+  margin: auto;
+  
+}
+#play {
+  display: block;
+  margin: auto;
+  font-size: large;
+  padding: 25px 40px;
+  background: linear-gradient(#daeaf0, #8ee3ff);
+  border: solid black 1px;
+}
+#flex-container {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  padding-top: 25%;
+}
+#flex-container div {
+  margin: auto;
+  padding: 20px;
+}
