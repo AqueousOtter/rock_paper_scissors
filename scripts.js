@@ -1,29 +1,19 @@
-/*  Rock, Paper, Scissors
+/*  Rock, Paper, Scissors UI
     Odin Project
-    Dustin Brown 05/22/2021
+    Dustin Brown 05/28/2021
 */
-// TODO: Modify game function for play button to start game and set scores,
-// and ungrey button elements
-
 
 //varibles for buttons and game play
 const play = document.querySelector('#play');
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
+const scoresDisplay = document.querySelector('#scores');
+const output = document.querySelector('#output');
 
-//start game
-play.addEventListener('click', ()=> {
-    game() }
-    );
 
-//choices
-rock.addEventListener('click' , ()=> {
-    playRound("rock", computerPlay())});
-paper.addEventListener('click' , ()=> {
-    playRound("paper", computerPlay())});
-scissors.addEventListener('click' , ()=> {
-    playRound("scissors", computerPlay())});
+
+
 
 //random function for computer (0,1,2)
 function computerRandom(){
@@ -53,70 +43,85 @@ function computerPlay(){
 
 }
 
-//play round function: two parameters case insensitive "playerSelection", "computerSelection"
-//return string winner
-function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-    let message;
-    let winner = false;
+//listeners for buttons 
+let playerRock = rock.addEventListener('click' , ()=> {
+    playRound("rock", computerPlay(), startGame)});
+let playerPaper = paper.addEventListener('click' , ()=> {
+    playRound("paper", computerPlay(), startGame)});
+let playerScissors = scissors.addEventListener('click' , ()=> {
+    playRound("scissors", computerPlay(), startGame)});
 
-    //if statements for comparing, separate player wins for easier reading.
-    //combined computer win for shorter code
-    if ((playerSelection == "rock") && (computerSelection == "scissors")){
-        message = "You Win! Rock beats Scissors!"
-        winner = true;
-    }
-    else if ((playerSelection == "paper") && (computerSelection == "rock")){
-        message = "You Win! Paper covers Rock!";
-        winner = true;
-    }
-    else if ((playerSelection == "scissors") && (computerSelection == "paper")){
-        message = "You win! Scissors cut Paper!";
-        winner = true;
-    }
-    else {
-        message = `You lose! ${computerSelection} beats ${playerSelection}`;
-        winner = false;
-    }
-    console.log(message);
-    return winner;
-}
-
-let playerScore;
-let computerScore;
-// game function: loop using round function, 5 rounds, score, winner/loser at end
-//use prompt for input
-function game(){
+//global var for starting game
+var startGame = false;
+//varibles for round scoring
+let playerScore = 0;
+let computerScore = 0;
+//start game
+play.addEventListener('click', ()=> {
+    startGame = true;
     playerScore = 0;
     computerScore = 0;
-    //varible declaration
-    let round = 1;
-    let playerSelection;
-    let computerSelection;
-    let win;
-    //do while loop for rounds
-    do{
-        playerSelection = prompt("Enter Choice:");
-        computerSelection = computerPlay();
-        win = playRound(playerSelection, computerSelection);
-        if(win){
+    
+});
+
+//play round function: two parameters case insensitive, "computerSelection"
+//displays scores and winner messages
+function playRound(playerSelection, computerSelection, startGame){
+    if(startGame == false){
+        play.classList.toggle("attention");
+        playerScore = 0; 
+        computerScore = 0;
+    }
+
+    else if (startGame == true){
+        computerSelection = computerSelection.toLowerCase();
+        let winner = false;
+
+        //if statements for comparing, separate player wins for easier reading.
+        //combined computer win for shorter code
+        if ((playerSelection == "rock") && (computerSelection == "scissors")){
+            message = "You Win! Rock beats Scissors!"
+            winner = true;
+        }
+        else if ((playerSelection == "paper") && (computerSelection == "rock")){
+            message = "You Win! Paper covers Rock!";
+            winner = true;
+        }
+        else if ((playerSelection == "scissors") && (computerSelection == "paper")){
+            message = "You win! Scissors cut Paper!";
+            winner = true;
+        }
+        else {
+            message = `You lose! ${computerSelection} beats ${playerSelection}`;
+            winner = false;
+        }
+        if (winner){
             playerScore++;
+            output.style.color = "green";
         }
         else {
             computerScore++;
+            output.style.color = "red"; 
         }
-        round++;
+        if (playerScore >= 5){
+            message =`You won!<br><br>Your score: ${playerScore} | Computer score: ${computerScore}<br>Press 'Play Game' to start a new round.`;
+            startGame = false;
+            
+        }
+        else if (computerScore >= 5){ 
+            message =`You lost!<br><br>Your score: ${playerScore} | Computer score: ${computerScore}<br>Press 'Play Game' to start a new round.`;
+            startGame = false;
+        }
+        console.log(startGame)
+        //displays winning message
+        output.innerHTML = message;
+        output.style.display = "block";
+        //updates scores
+        scoresDisplay.innerHTML = `Player's Score ${playerScore} : ${computerScore} Computer's Score`; 
+    }
+};
 
-    }while(round <= 5);
-    if (playerScore > computerScore){
-        alert(`\t\tYou Won!\nYour Score: ${playerScore} | Computer: ${computerScore}`)
-    }
-    else if(playerScore == computerScore){
-        alert(`Tied! Both players scored ${playerScore}`);
-    }
-    else{
-        alert(`You lose!\nYour score: ${playerScore} | Computer: ${computerScore}`);
-    }
-    
-}
+//displays scores
+document.addEventListener("DOMContentLoaded", ()=>{
+    scoresDisplay.innerHTML = `Player's Score ${playerScore} : ${computerScore} Computer's Score`; 
+});

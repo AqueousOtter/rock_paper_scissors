@@ -14,3 +14,8 @@ Learned (console app version):
 ***JavaScript Version***
 
 Goal: Make a UI for the rock, paper, scissors game.
+
+Learned:
+**DOM Manipulation
+**CSS Styling
+**Functions 

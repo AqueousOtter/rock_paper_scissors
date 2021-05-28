@@ -7,31 +7,94 @@ html {
 }
 
 img {
-  height: 100px;
-  width: 100px;
-
+  height: 150px;
+  width: 150px;
+}
+button {
+  box-shadow: 7px 7px 10px #292929;
 }
 section {
   width: 60%;
   display: block; 
   margin: auto;
-  
 }
+
+#heading {
+  text-align: center;
+  background-color: #daeaf0e3;
+  border: black solid 3px;
+  box-shadow: 5px 5px 8px #292929;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+#scores {
+  text-align: center;
+  font-size: larger;
+  border: black solid 3px;
+  box-shadow: 5px 5px 8px #292929;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 10px;
+  background-color: #daeaf0a1;
+}
+
 #play {
   display: block;
   margin: auto;
+  box-shadow: 5px 5px 8px #292929;
   font-size: large;
-  padding: 25px 40px;
-  background: linear-gradient(#daeaf0, #8ee3ff);
+  height: 80px;
+  width: 250px;
+  background: linear-gradient(#daeaf0, #c0f0ff);
   border: solid black 1px;
 }
 #flex-container {
   display: flex;
   margin: auto;
   width: 80%;
-  padding-top: 25%;
+  padding-top: 12%;
 }
 #flex-container div {
   margin: auto;
-  padding: 20px;
+}
+#output {
+  display: none;
+  margin: auto;
+  width: 30%;
+  text-align: center;
+  background-color: #ffffff;
+  border: 2px solid black;
+  box-shadow: 7px 7px 8px #292929;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+/*toggled class for play button */
+
+.attention {
+  animation-name: shake;
+  animation-duration: 1s;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0 , 0);
+  }
 }
