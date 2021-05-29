@@ -1,5 +1,5 @@
 html {
-    background: url(/Foundations/Rock_Paper_Scissors/rps/rock_paper_scissors/images/bg-friends.jpg) no-repeat center center fixed;;
+    background: url(./images/bg-friends.jpg) no-repeat center center fixed;;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -19,10 +19,12 @@ section {
   margin: auto;
 }
 
+
 #heading {
   text-align: center;
   background-color: #daeaf0e3;
   border: black solid 3px;
+  border-radius: 20px;
   box-shadow: 5px 5px 8px #292929;
   margin-left: 30%;
   margin-right: 30%;
@@ -32,6 +34,7 @@ section {
   text-align: center;
   font-size: larger;
   border: black solid 3px;
+  border-radius: 40px;
   box-shadow: 5px 5px 8px #292929;
   margin-left: 30%;
   margin-right: 30%;
@@ -48,6 +51,7 @@ section {
   width: 250px;
   background: linear-gradient(#daeaf0, #c0f0ff);
   border: solid black 1px;
+  border-radius: 15px;
 }
 #flex-container {
   display: flex;
@@ -65,6 +69,7 @@ section {
   text-align: center;
   background-color: #ffffff;
   border: 2px solid black;
+  border-radius: 12px;
   box-shadow: 7px 7px 8px #292929;
   padding: 25px;
   margin-top: 25px;
@@ -97,4 +102,8 @@ section {
   60% {
     transform: translate3d(4px, 0 , 0);
   }
+}
+
+.hidden {
+  display: none;
 }

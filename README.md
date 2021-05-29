@@ -19,3 +19,8 @@ Learned:
 **DOM Manipulation
 **CSS Styling
 **Functions 
+
+Biggest takeaway:
+
+Learned a lot of work with functions, manipulating DOM and working out logic for the game. 
+Focused on trying to do some style along with function.
